@@ -12,4 +12,7 @@ df['Variance_pct'] = (df['actual'] - df['budget']) / df['budget'] * 100
 Threshold_pct = 10
 df['Variance_signficant'] = df['Variance_pct'].abs() > Threshold_pct
 
+flagged_df = df[df['Variance_signficant']]
+flagged_df = flagged_df.sort_values('Variance', key = abs, ascending = False)
+print(flagged_df)
 print(df)
